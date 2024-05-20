@@ -1,2 +1,3 @@
 # Exclui a visualizacao previa da pagina dos projetos
 projeto_preview.html
+templates/view_projeto_teste.html
