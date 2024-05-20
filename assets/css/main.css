@@ -2301,7 +2301,7 @@ header .icon.circled {
 
 #header {
 	position: relative;
-	background-image: url("../../images/banner.gif");
+	/* background-image: url("../../images/geral/banner_teste.jpg"); */
 	background-color: #000000;
 	background-size: cover;
 	background-position: center center;
