@@ -19,7 +19,7 @@ $(document).ready(function () {
     var descricoes = {
         "nenhumIDinformado": {
             "titulo": "Ops... nenhum projeto encontrado",
-            "descricao": "<center>Favor, siga até a <a href='../#reelProjetos'>página inicial</a> e clique em um dos projetos.<br><br><img src='https://gifs.eco.br/wp-content/uploads/2022/09/gifs-de-foguete-3.gif' width='300' heigth='550'></img></center>"
+            "descricao": "<center>Favor, siga até a <a href='../#reelProjetos'>página inicial</a> e clique em um dos projetos.<br><br><img src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fgifs%2Fsearch%2Ffoguete%2F&psig=AOvVaw05hxlOHDqfRhlxPsITIcw9&ust=1743363822784000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCrjL2GsIwDFQAAAAAdAAAAABAg' width='300' heigth='550'></img></center>"
         },
         "1": {
             "titulo": "Ao Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)",
@@ -80,6 +80,10 @@ $(document).ready(function () {
         "15": {
             "titulo": "Contatinho Inteligente",
             "descricao": "<p>O <b>Contatinho Inteligente</b> é a integração que programei com o <b>WhatsApp</b> e o <b>ChatGPT</b>. A cada interação feita com o meu número de WhatsApp é disparado um webhook com o Json que detalha a interação. Exemplos de interação são: receber mensagens/áudios/stickers/etc, receber reação, status respondido/visualizado, entre outros. O que fiz então? Ignorei os hooks de qualquer tipo de interação e tratei o Json apenas quando eu recebia uma mensagem de texto.</p><p>Dessa forma, programei a requisição à API da OpenAI e enviei a mensagem que recebi como payload da requisição. Assim que a API me responde, fiz uma requisição para o WhatsApp enviando o <i>response</i> do ChatGPT como se fosse minha resposta para o mesmo número que me enviou a mensagem. O resultado disso pode ser visto no vídeo abaixo:</p><br><center><iframe width='560' height='315' src='https://www.youtube.com/embed/k-1kAMNdakY' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen> </iframe></center><br><p>A verdadeira ideia desse projeto foi facilitar a consulta ao ChatGPT, sem muitos passos. Considerei, também, o fato de que todo brasileiro já tem o WhatsApp instalado e tem familiaridade com sua interface. Então, pensei que pudesse ser interessante aproveitar a interface do WhatsApp com toda sua facilidade de uso e popularidade para fazer essa integração. Em resumo, programei um recurso que interage com o WhatsApp e com a Inteligência Artificial redirecionando dados de um para o outro. O fluxo correto desses redirecionamento são exibidos abaixo, com a ordem enumerada.</p> <br><center><figure><img src='../images/geral/img7.png' alt='Diagrama WhatsApp' width='50%'><figcaption>Fluxo da requisição e resposta.</figcaption></figure></center><p><br>Através dessa programação, o acesso à IA ficou mais simples, pois a comunicação seria através do WhatsApp dispensando criação de conta, login e em alguns casos poupa até mesmo o consumo de dados móveis (se seu plano de internet possui WhatsApp ilimitado).</p><br><p><b>Tecnologias usadas: </b>Laravel, API Chat Open AI (modelo Davinci-003), API WhatsApp, InfinityFree (hospedagem).</p>"
+        },
+        "16": {
+            "titulo": "Análise Facial: Reconhecimento de Sono",
+            "descricao": "<p>O algoritmo visa capturar frames de um rosto e tenta identificar se a pessoa está dormindo ou não, de forma rápida (em tempo real). Para inferir o estado de sono em uma pessoa foi levado em consideração alguns parâmetros:<br> <li><b>Abertura dos Olhos:</b> dos 468 pontos faciais identificados pela lib MediaPipe, 12 são nos olhos (6 em cada). Os pontos são posicionados na mesma linha dos cílios e acompanham os movimentos de abrir e fechar dos olhos. Com isso, foi calculado a distância euclidiana entre esses pontos para descobrir seus níveis de proximidade e perceber quando o olhou fechou ou abriu.<br><br><center><img src='https://user-images.githubusercontent.com/121525620/220442839-976a834d-80b7-4339-aa23-d74ad2c7925c.png' width='350' height='100'></center><br> <li><b>Abertura da Boca:</b> em um processo semelhante ao dos olhos, porém com 8 pontos identificados. Os pontos seguem a linha inferior dos lábios e por essa razão, mesmo sorrindo não significa que abriu a boca, pois os lábios podem estar juntos durante o sorriso.</li> <br> <center><img src='https://camo.githubusercontent.com/79c1362c54fceb9ae6232c8c9f5cd91350df1cd153aef816800698d35bd60c30/68747470733a2f2f63646e312e676e6172757375736572636f6e74656e742e636f6d2e62722f312f3536333639312f65353537303833342d336235372d346564302d623062632d3233323461333263646566632e706e67' width='250' height='150'></center> <br> <li><b>Quantidade de Piscadas:</b> existe uma relação direta entre o nível do sono e a quantidade de piscar de olhos por minuto, por isso a cada vez que o olho fecha é considerado 1 piscar a mais para saber se a quantidade está satisfatória ou se apresenta forte sobrecarga de sono.</li> <br> <li><b>Tempo:</b> a partir do momento que o olho e/ou a boca se fecham, inicia a contagem. Caso os olhos e a boca permaneçam fechados por 1.5 segundo, considera-se estado de sono e é exibido uma mensagem na tela 'Dormindo!' para mostrar que identificou a sonolência.</li> <br><br> A fórmula aplicada para calcular os dois primeiros itens acima são da seguinte representação: <br><br> <b>Olhos:</b><br> <img src='https://user-images.githubusercontent.com/121525620/220448363-c86a5d94-b614-4509-94e0-9b963e6b743e.png' width='300' height='100'> <br><br> <b>Boca:</b><br> <img src='https://user-images.githubusercontent.com/121525620/220448526-2166ddda-179b-422e-b9fe-cce64a7ffc92.png' width='500' height='60'> <br><br> Os parâmetros são calculados continuamente, enquanto a captura identifica os pontos faciais, e exibe na visualização das imagens conforme é mostrado abaixo:<br> <center><img src='https://user-images.githubusercontent.com/121525620/220447427-338fb558-00c9-479c-a993-66dbe5852bb5.png' width='450' height='350'></center> <br><br>  <a href='https://github.com/guilhermednztt/Analise_Sono?tab=readme-ov-file' target='_blank'><button class='primary button'>Acesse o código (repositório)</button></a> </p>"
         }
     }
 
@@ -99,7 +103,8 @@ $(document).ready(function () {
      */
     $("#buscarProjeto").on('click', function () {
         var texto = $("#projetoBuscar").val();
-        var projetos = "<center><b>Projetos Encontrados:</b></center><div class='container'><br>";
+        var projetos = "<center><b>Resultados para:</b> "+texto+"</center><div class='container'><br><b>IA e Machine Learning</b><br>";
+        var projetos_extras = "<b>Outros temas (não IA)</b><br>"; // projetos que nao sao de IA e M. Learning
         var cont = 0;
 
         // se existir texto digitado, faz a busca
@@ -111,7 +116,12 @@ $(document).ready(function () {
                 var proj = (descricoes[i].descricao).toUpperCase();
 
                 if (proj.includes(texto)) {
-                    projetos += "&rarr; &nbsp; <a href='projeto.html?cod="+i+"'>"+descricoes[i].titulo+"</a><br>";
+                    // verifica se eh um dos projetos que nao sao de IA
+                    if (i >= 7 && i <= 15) {
+                        projetos_extras += "&rarr; &nbsp; <a href='projeto.html?cod="+i+"'>"+descricoes[i].titulo+"</a><br>";
+                    } else { // projetos que sao de IA
+                        projetos += "&rarr; &nbsp; <a href='projeto.html?cod="+i+"'>"+descricoes[i].titulo+"</a><br>";
+                    }
                     cont++;
                 }
                 projetos += "</ul>";
@@ -119,12 +129,13 @@ $(document).ready(function () {
 
             if(cont == 0) {
                 projetos = "Nenhum projeto foi encontrado. Tente novamente usando <b>palavras chaves</b>.";
+                projetos_extras = "";
             }
 
             // Exibir modal de resultados
             if(projetos.length > 0) {
                 bootbox.alert({
-                    message: projetos,
+                    message: projetos + "<br>" + projetos_extras,
                     callback: function () {
                         //
                     }
