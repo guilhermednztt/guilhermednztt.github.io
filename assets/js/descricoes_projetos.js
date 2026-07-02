@@ -18,80 +18,478 @@ $(document).ready(function () {
      */
     var descricoes = {
         "nenhumIDinformado": {
+            "topico": "project.not_found",
             "titulo": "Ops... nenhum projeto encontrado",
-            "descricao": "<center>Favor, siga até a <a href='../#reelProjetos'>página inicial</a> e clique em um dos projetos.<br><br><img src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fpt%2Fgifs%2Fsearch%2Ffoguete%2F&psig=AOvVaw05hxlOHDqfRhlxPsITIcw9&ust=1743363822784000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKCrjL2GsIwDFQAAAAAdAAAAABAg' width='300' heigth='550'></img></center>"
+            "subtitulo": "Nenhum projeto foi localizado para o identificador informado.",
+            "imagem": "../assets/projetos/not-found.jpg",
+            "tags": "Erro|Projeto não encontrado|Portfólio",
+            "tipo": "Página de fallback",
+            "dominio": "Navegação do portfólio",
+            "papel_tecnico": "Tratamento de estado vazio",
+            "complexidade": "Validação de parâmetro e experiência de navegação",
+            "contexto": "Essa página é exibida quando nenhum identificador de projeto é informado ou quando o projeto solicitado não existe no array de dados.",
+            "arquitetura": "A estrutura funciona como uma resposta de fallback para preservar a navegação e evitar quebra de interface.",
+            "arquitetura_topicos": "01 / entrada|02 / validação|03 / fallback|04 / navegação",
+            "arquitetura_titulo": "Identificador recebido|Consulta ao array|Estado vazio|Retorno ao portfólio",
+            "arquitetura_descricao": "A página recebe um código de projeto pela URL.|O código é validado contra o objeto de projetos disponível.|Caso não exista, uma mensagem amigável é exibida.|O usuário é direcionado de volta para a listagem de projetos.",
+            "decisao_titulo": "Evitar página quebrada|Preservar navegação|Mensagem simples",
+            "decisao_descricao": "Mesmo sem projeto válido, a experiência deve continuar funcional.|O usuário precisa conseguir voltar rapidamente para a home do portfólio.|A mensagem deve ser clara, objetiva e sem excesso técnico.",
+            "tecnologias": "HTML, CSS e JavaScript.",
+            "tags_tecnologias": "HTML|CSS|JavaScript",
+            "atuacao": "Estruturação de estado de erro para navegação dinâmica entre projetos.",
+            "galeria": "../assets/projetos/not-found.jpg",
+            "prox_projeto": "1"
         },
+
         "1": {
-            "titulo": "Ao Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)",
-            "descricao": "<p>O projeto de pesquisa foi desenvolvido durante a bolsa de Iniciação Tecnológica do CNPq, executado pelo Centro Paula Souza. Consiste em um sistema de Internet das Coisas para monitoramento de temperatura, umidade relativa e presença de pessoas em <i>data centers</i> e ambientes computacionais críticos. O sistema opera em tempo real para atender a criticidade desses ambientes.<br><br>A operação inicia na captura das variáveis ambientais em campo através de sensores e microcontroladores. Os dados são transmitidos por telemetria, tratados, armazenados e conectados à diferentes formas de visualização de dados. Também, existe um sistema de alerta por e-mail para casos de anomalias.<br><br>Boa parte do funcionamento acontece entre camada de aplicação e armazenamento, portanto apenas as ferramentas de visualização de dados são capazes de serem observadas a olho. Com isso, nesse projeto desenvolvi uma ferramenta própria que representa a planta do <i>data center</i> seguindo o padrão ANSI/TIA-942 e exibe as condições térmicas em cada ponto monitorado dentro do ambiente.<br><br><b>Tecnologias usadas: </b>ESP32, SHT30, Arduíno, MQTT, SMTP, Mosquitto, Python, Node-RED, InfluxDB, Flask, Grafana e Linux.</p><br><div class='box alt'><div class='row gtr-50 gtr-uniform'><div class='col-12'><span class='image fit'><img src='https://github.com/guilhermedonizetti/Portofolio/blob/master/static/images/cnpq_projeto/imagem1.png' alt='' /></span></div></div></div><div class='box alt'><div class='row gtr-50 gtr-uniform'><div class='col-12'><span class='image featured'><img src='../images/geral/img8.png' alt='' /></span></div><div class='col-4'><span class='image featured'><img src='../images/geral/img9.png' alt='' /></span></div><div class='col-4'><span class='image featured'><img src='../images/geral/img10.png' alt='' /></span></div><div class='col-4'><span class='image featured'><img src='../images/geral/img11.png'/></span></div></div></div>"
+            "topico": "iot.research / cnpq",
+            "titulo": "Monitoramento IoT para Data Centers",
+            "subtitulo": "Sistema de Internet das Coisas para monitoramento térmico, presença e condições ambientais em ambientes computacionais críticos.",
+            "imagem": "../images/geral/img8.png",
+            "tags": "IoT|Data Center|Monitoramento|Telemetria|Grafana|Flask",
+            "tipo": "Pesquisa aplicada / Sistema IoT",
+            "dominio": "Internet das Coisas, data centers e ambientes críticos",
+            "papel_tecnico": "Desenvolvimento, integração, visualização de dados e aplicação web",
+            "complexidade": "Captura de sensores, telemetria, armazenamento, visualização, alertas e representação de planta técnica",
+            "contexto": "O projeto foi desenvolvido durante uma bolsa de Iniciação Tecnológica vinculada ao CNPq e ao Centro Paula Souza. A proposta era monitorar temperatura, umidade relativa e presença de pessoas em data centers e ambientes computacionais críticos, operando em tempo real para apoiar a tomada de decisão em cenários sensíveis.",
+            "arquitetura": "A solução conecta sensores e microcontroladores a uma cadeia de telemetria, tratamento, armazenamento e visualização. Além dos dashboards, foi desenvolvida uma ferramenta própria para representar a planta do data center conforme o padrão ANSI/TIA-942 e exibir as condições térmicas por ponto monitorado.",
+            "arquitetura_topicos": "01 / sensores|02 / telemetria|03 / armazenamento|04 / visualização",
+            "arquitetura_titulo": "Coleta ambiental|Transmissão dos dados|Série temporal|Painéis e planta técnica",
+            "arquitetura_descricao": "Sensores capturam temperatura, umidade e presença em pontos críticos.|Microcontroladores transmitem os dados por protocolos de mensageria.|Os dados são armazenados para consulta histórica e análise operacional.|Dashboards e uma planta técnica exibem o comportamento térmico do ambiente.",
+            "decisao_titulo": "Usar IoT em tempo real|Separar coleta e visualização|Criar planta própria",
+            "decisao_descricao": "Ambientes críticos exigem leitura contínua e rápida das variáveis ambientais.|A separação entre sensores, armazenamento e visualização facilita manutenção e evolução.|A planta técnica permite leitura espacial das condições térmicas, indo além de gráficos tradicionais.",
+            "tecnologias": "ESP32, SHT30, Arduino, MQTT, SMTP, Mosquitto, Python, Node-RED, InfluxDB, Flask, Grafana e Linux.",
+            "tags_tecnologias": "ESP32|SHT30|Arduino|MQTT|Python|Node-RED|InfluxDB|Flask|Grafana|Linux",
+            "atuacao": "Atuação na construção da solução IoT, integração entre sensores e camadas de aplicação, criação de visualização técnica e estruturação do fluxo de monitoramento.",
+            "galeria": "../images/geral/img8.png|../images/geral/img9.png|../images/geral/img10.png|../images/geral/img11.png",
+            "prox_projeto": "2"
         },
+
         "2": {
-            "titulo": "Trabalho de Graduação",
-            "descricao": "<p>O projeto é o trabalho final entregue na Faculdade de Tecnologia do Estado de São Paulo (em Cruzeiro). O trabalho é um sistema de monitoramento de variáveis ambientais para <i>data centers</i>, semelhante ao <a href='projeto.html?cod=1'>projeto do CNPq</a>, porque na verdade o projeto entregue ao CNPq é a base deste.<br><br>O que há de diferente no meu Trabalho de Graduação então? O TG propôs a extensão do monitoramento local feito com Internet das Coisas para um monitoramento também remoto através da Computação em Nuvem. Através das ferramentas utilizadas foi possível o monitoramento também remoto em tempo real e com a mesma clareza que o local. O trabalho foi aprovado com nota 10 pela banca examinadora.<br><br><b>Participação no trabalho: </b><a href='https://github.com/SACRIER' target='_blank'>Luiz Fernando Rodrigues</a><br><b>Tecnologias usadas: </b>ESP32, SHT30, Arduíno, WiFi, MQTT, SMTP, Mosquitto, Python, Node-RED, InfluxDB, InfluxDB Cloud, IoT Home, AWS IoT Core, Flask, Grafana e Linux.</p><div class='box alt'><div class='row gtr-50 gtr-uniform'><div class='col-12'><span class='image fit'><img src='../images/geral/img8.png' alt='' /></span></div><div class='col-12'><span class='image fit'><img src='../images/projetos/imagem9.avif' alt='' /></span></div></div></div>"
+            "topico": "academic.project / cloud.iot",
+            "titulo": "Trabalho de Graduação em Monitoramento Remoto",
+            "subtitulo": "Extensão de um sistema IoT local para monitoramento remoto em nuvem de variáveis ambientais em data centers.",
+            "imagem": "../images/projetos/imagem9.avif",
+            "tags": "IoT|Cloud|AWS IoT Core|Data Center|Monitoramento|Grafana",
+            "tipo": "Trabalho de Graduação / Sistema IoT em nuvem",
+            "dominio": "Monitoramento ambiental remoto e computação em nuvem",
+            "papel_tecnico": "Desenvolvimento, integração cloud, monitoramento e visualização de dados",
+            "complexidade": "Integração entre camada física, telemetria local, nuvem, dashboards e monitoramento remoto em tempo real",
+            "contexto": "O projeto foi apresentado como Trabalho de Graduação na Fatec Cruzeiro. Ele parte da base do sistema IoT desenvolvido no contexto do CNPq, mas adiciona a capacidade de monitoramento remoto por meio de computação em nuvem.",
+            "arquitetura": "A solução conecta sensores ambientais a serviços locais e remotos, permitindo que os dados sejam enviados, armazenados e visualizados tanto localmente quanto em ambiente cloud, mantendo clareza operacional em tempo real.",
+            "arquitetura_topicos": "01 / sensores|02 / rede local|03 / nuvem|04 / dashboard",
+            "arquitetura_titulo": "Coleta ambiental|Comunicação local|Monitoramento remoto|Visualização em tempo real",
+            "arquitetura_descricao": "Sensores capturam variáveis críticas do ambiente.|Os dados são transmitidos por WiFi e mensageria.|Serviços cloud recebem e disponibilizam os dados remotamente.|Dashboards exibem as medições com clareza operacional.",
+            "decisao_titulo": "Expandir o monitoramento|Usar cloud para acesso remoto|Manter leitura em tempo real",
+            "decisao_descricao": "O projeto precisava ir além da visualização local.|A nuvem permite acompanhamento remoto do ambiente monitorado.|A utilidade do sistema depende da atualização contínua das informações.",
+            "tecnologias": "ESP32, SHT30, Arduino, WiFi, MQTT, SMTP, Mosquitto, Python, Node-RED, InfluxDB, InfluxDB Cloud, IoT Home, AWS IoT Core, Flask, Grafana e Linux.",
+            "tags_tecnologias": "ESP32|SHT30|WiFi|MQTT|Python|Node-RED|InfluxDB Cloud|AWS IoT Core|Flask|Grafana|Linux",
+            "atuacao": "Participação no desenvolvimento técnico, integração cloud, organização do fluxo de monitoramento e construção da solução apresentada como trabalho acadêmico.",
+            "galeria": "../images/geral/img8.png|../images/projetos/imagem9.avif",
+            "prox_projeto": "3"
         },
+
         "3": {
-            "titulo": "Optical Character Recognition (OCR) em Python",
-            "descricao": "<p>O programa utiliza da técnica de Optical Character Recognition (OCR), que é uma técnica da Inteligência Artificial para reconhecimento de caracteres em imagens. Essa técnica é desenvolvida há anos e, atualmente, fazer aplicações nesse segmento está cada vez mais simplificado, como pode ser observado no código do programa.<br><br>O programa espera uma imagem como entrada e realiza a busca dos caracteres. Após identificar, podemos manipular da forma que quisermos. O programa OCR Python dá uma pequena demonstração de análise de texto com dois objetivos:<br><li>Encontrar padrão: </li>o programa usa Regex para encontrar datas e CPFs na imagem. Com isso, qualquer outro padrão poderia ser buscado.<li>Analisar teor das palavras: </li>com base num conjunto de 30 palavras consideradas boas e más, o programa busca por essas palavras e calcula quantos por cento do texto da imagem é formado por elas.<br>Essas coisas são pequenas demonstrações de automatização de análise de conteúdo e outros.<br><br><b>Tecnologias usadas: </b>Python, Streamlit e Pytesseract.</p><div class='box alt'><div class='row gtr-50 gtr-uniform'><div class='col-12'><span class='image fit'><img src='../images/geral/img12.png' alt='' /></span></div><br><div class='col-12'><span class='image fit'><img src='../images/geral/img13.png' alt='' /></span></div></div></div>"
+            "topico": "ai.ocr / document.analysis",
+            "titulo": "OCR em Python",
+            "subtitulo": "Aplicação de reconhecimento óptico de caracteres para extração, leitura e análise simples de conteúdo textual em imagens.",
+            "imagem": "../images/geral/img12.png",
+            "tags": "OCR|Python|Streamlit|Pytesseract|Regex|IA Aplicada",
+            "tipo": "Aplicação de IA / OCR",
+            "dominio": "Reconhecimento de caracteres e análise de documentos",
+            "papel_tecnico": "Desenvolvimento da aplicação, extração textual e análise baseada em padrões",
+            "complexidade": "Leitura de imagem, extração de texto, busca por padrões e análise semântica simplificada",
+            "contexto": "O projeto demonstra o uso de OCR para identificar caracteres em imagens e permitir manipulações posteriores, como busca por padrões e análise de teor das palavras.",
+            "arquitetura": "A aplicação recebe uma imagem como entrada, executa OCR, transforma o conteúdo visual em texto e aplica análises simples sobre o resultado, incluindo expressões regulares e contagem de palavras classificadas.",
+            "arquitetura_topicos": "01 / entrada|02 / OCR|03 / análise|04 / resultado",
+            "arquitetura_titulo": "Upload da imagem|Extração de texto|Busca por padrões|Exibição interpretada",
+            "arquitetura_descricao": "O usuário envia uma imagem para análise.|O OCR identifica os caracteres presentes na imagem.|Regex e regras simples buscam datas, CPFs e palavras relevantes.|A interface apresenta o texto extraído e os indicadores calculados.",
+            "decisao_titulo": "Usar OCR como base|Aplicar Regex|Demonstrar análise textual",
+            "decisao_descricao": "O OCR transforma conteúdo visual em dados manipuláveis.|Regex permite localizar padrões específicos dentro do texto extraído.|A análise de palavras demonstra potencial para automação documental.",
+            "tecnologias": "Python, Streamlit e Pytesseract.",
+            "tags_tecnologias": "Python|Streamlit|Pytesseract|Regex|OCR",
+            "atuacao": "Construção da aplicação, integração com OCR, definição das análises textuais e interface para demonstração do processamento.",
+            "galeria": "../images/geral/img12.png|../images/geral/img13.png",
+            "prox_projeto": "4"
         },
+
         "4": {
+            "topico": "ai.routing / graph.search",
             "titulo": "Rotas Cidades",
-            "descricao": "<p>O Rotas é um programa de Inteligência Artificial baseado na problemática do caixeiro viajante.<br><blockquote>O caixeiro viajante é o indivíduo que deve percorrer todo o conjunto de cidades e voltar ao ponto de partida sem repetir a cidade.</blockquote><br>No caso do programa, o algoritmo recebe uma cidade destino que é um lugar que sofreu algum desastre e precisa de Ajuda Humanitária. Dentre as cidades com pontos de Ajuda Humanitária mais próxima, o programa gera a melhor rota considerando a quantidade de saltos (número de cidades), ou considerando a distância, entre outras formas. A escolha do que considerar fica a critério do usuário.<br><br>Da mesma forma, após chegar ao local que precisa da ajuda, o programa gera a rota que leva até a cidade que possui um ponto de atendimento hospitalar para esses cenários. Dessa forma o programa é multi objetivo.<br>Para fins de validação do algoritmo, o projeto implementa sobre uma área real que é o Vale do Paraíba, São Paulo-Brasil. Inclui 39 cidades.<br><br><b>Participação no trabalho: </b><a href='https://github.com/SACRIER' target='_blank'>Luiz Fernando Rodrigues</a><br><b>Tecnologias usadas: </b>Python e Streamlit.</p><br><a href='https://share.streamlit.io/guilhermedonizetti/ia_disciplina/index.py' target='_blank'><button class='primary button'>Acesse ao programa!</button></a>&nbsp;&nbsp;<a href='https://github.com/guilhermedonizetti/IA_disciplina' target='_blank'>código</a><div class='box alt'><div class='row gtr-50 gtr-uniform'><div class='col-12'><span class='image fit'><img src='../images/projetos/imagem3.avif' alt='' /></span></div><br><div class='col-12'><span class='image fit'><img src='../images/geral/img14.png' alt='' /></span></div></div></div>"
+            "subtitulo": "Algoritmo de IA para geração de rotas multiobjetivo em cenários de ajuda humanitária no Vale do Paraíba.",
+            "imagem": "../images/projetos/imagem3.avif",
+            "tags": "IA|Grafos|Rotas|Caixeiro Viajante|Streamlit|Python",
+            "tipo": "Aplicação de IA / Algoritmos de rota",
+            "dominio": "Busca em grafos, roteamento e otimização",
+            "papel_tecnico": "Modelagem do problema, implementação do algoritmo e construção da interface",
+            "complexidade": "Geração de rotas considerando múltiplos critérios, cidades reais, pontos de ajuda e atendimento hospitalar",
+            "contexto": "O projeto é baseado na problemática do caixeiro viajante, aplicado a um cenário de ajuda humanitária. O algoritmo recebe uma cidade afetada por desastre e gera rotas para pontos de ajuda e atendimento hospitalar.",
+            "arquitetura": "A solução representa cidades como nós de um grafo e conexões como possibilidades de deslocamento. O usuário define critérios de rota, e o algoritmo calcula caminhos considerando saltos, distância e objetivos distintos.",
+            "arquitetura_topicos": "01 / cidades|02 / grafo|03 / critérios|04 / rota",
+            "arquitetura_titulo": "Base territorial|Modelagem em grafo|Escolha do objetivo|Caminho calculado",
+            "arquitetura_descricao": "O projeto usa cidades reais do Vale do Paraíba.|As cidades e conexões são representadas como estrutura de grafo.|O usuário escolhe se deseja otimizar saltos, distância ou outro critério.|O sistema retorna a rota mais adequada para o objetivo selecionado.",
+            "decisao_titulo": "Usar região real|Aplicar problema clássico|Tratar múltiplos objetivos",
+            "decisao_descricao": "A validação com cidades reais torna o projeto mais concreto.|O caixeiro viajante oferece uma base conceitual forte para roteamento.|O cenário exige mais de uma decisão: ajuda humanitária e atendimento hospitalar.",
+            "tecnologias": "Python e Streamlit.",
+            "tags_tecnologias": "Python|Streamlit|Grafos|Busca|Otimização",
+            "atuacao": "Participação na modelagem da solução, implementação da lógica de rotas, estruturação dos dados e construção da interface de simulação.",
+            "galeria": "../images/projetos/imagem3.avif|../images/geral/img14.png",
+            "prox_projeto": "5"
         },
+
         "5": {
-            "titulo": "WayPy - pacote",
-            "descricao": "<p>O pacote realiza buscas em grafo para tentar encontrar caminho entre dois pontos distintos, usando diferentes métodos. O tipo de problema que o WayPy se propõe a resolver são os que precisam encontrar uma saída a partir de um ponto específico. Então, encontrar rota entre duas cidades em um mapa é um problema que pode usar o pacote para resolver, o projeto <a href='https://share.streamlit.io/guilhermedonizetti/ia_disciplina/index.py' target='_blank'>Rotas Cidades</a> é um exemplo disso.<br><br>Outros problemas na área de Inteligência Artificial como encontrar a saída em um labirinto, encontrar caminho dentro de ambientes como supermercados e galpões, ou qualquer outra coisa semelhante, o WayPy é aplicável.<br>Os 8 métodos de busca implementados são por:<ul><li>Amplitude</li><li>Profundidade</li><li>Profundidade Limitada</li><li>Aprofundamento Iterativo</li><li>Bidirecional</li><li>A*</li><li>Greedy</li><li>Custo Uniforme</li></ul>Para usá-lo, é necessário a sua instalação:<br><code>pip3 install WayPy</code><br><br><b>Participação no trabalho: </b><a href='https://github.com/SACRIER' target='_blank'>Luiz Fernando Rodrigues</a><br><b>Tecnologias usadas: </b>Python.</p><br><a href='https://libraries.io/pypi/WayPy' target='_blank'><button class='primary button'>Acesse a página do pacote!</button></a>&nbsp;&nbsp;<a href='https://github.com/guilhermedonizetti/WayPy' target='_blank'>código</a><br><br><div class='box alt'><div class='row gtr-50 gtr-uniform'><div class='col-12'><span class='image fit'><img src='../images/projetos/imagem4.avif' alt='' /></span></div><br><div class='col-12'><span class='image fit'><img src='../images/geral/img15.png' alt='' /></span></div></div></div>"
+            "topico": "python.package / graph.search",
+            "titulo": "WayPy",
+            "subtitulo": "Pacote Python para busca de caminhos em grafos usando diferentes métodos clássicos de inteligência artificial.",
+            "imagem": "../images/projetos/imagem4.avif",
+            "tags": "Python|Pacote|Grafos|Busca|A*|Custo Uniforme",
+            "tipo": "Pacote Python / Biblioteca de algoritmos",
+            "dominio": "Busca em grafos e inteligência artificial clássica",
+            "papel_tecnico": "Implementação de algoritmos, empacotamento e documentação de uso",
+            "complexidade": "Implementação de múltiplos métodos de busca reutilizáveis para diferentes problemas de caminho",
+            "contexto": "O WayPy foi criado para resolver problemas que exigem encontrar caminhos entre pontos distintos, como rotas entre cidades, labirintos, supermercados, galpões e outros ambientes modelados como grafos.",
+            "arquitetura": "O pacote encapsula diferentes estratégias de busca em uma estrutura reutilizável. A ideia é permitir que outros projetos informem seus grafos e usem os métodos disponíveis para encontrar caminhos.",
+            "arquitetura_topicos": "01 / entrada|02 / grafo|03 / método|04 / caminho",
+            "arquitetura_titulo": "Definição do problema|Estrutura de nós|Estratégia de busca|Resultado reutilizável",
+            "arquitetura_descricao": "O usuário define origem, destino e estrutura do problema.|O ambiente é representado por nós e conexões.|O pacote executa o método de busca escolhido.|O caminho encontrado pode ser usado por outras aplicações.",
+            "decisao_titulo": "Criar pacote reutilizável|Implementar múltiplas buscas|Separar algoritmo do domínio",
+            "decisao_descricao": "Um pacote permite aplicar a lógica em diferentes projetos.|Métodos distintos atendem diferentes restrições de busca.|A biblioteca não depende de um domínio específico, como cidades ou labirintos.",
+            "tecnologias": "Python.",
+            "tags_tecnologias": "Python|PyPI|Grafos|A*|Greedy|BFS|DFS|Custo Uniforme",
+            "atuacao": "Implementação dos métodos de busca, estruturação do pacote, documentação e publicação para uso externo.",
+            "galeria": "../images/projetos/imagem4.avif|../images/geral/img15.png",
+            "prox_projeto": "6"
         },
+
         "6": {
+            "topico": "machine.learning / decision.tree",
             "titulo": "Classificador de Obesidade",
-            "descricao": "<p>O programa é uma interface para uma árvore de decisão que classifica uma pessoa em uma categoria, que são estas: peso insuficiente, peso normal, sobrepeso tipo I, sobrepeso tipo II, obesidade tipo I, obesidade tipo II e obesidade tipo III.<br><br>Para gerar a classificação correta, o usuário deve responder verdadeiramente ao formulário. No total são 16 campos que devem ser respondidos, relacionados à características físicas da pessoa (altura, idade, peso, sexo) e relacionadas ao estilo de vida (fumante ou não, meio de transporte que usa no dia a dia, entre outros).<br><br>As respostas são transformadas em valores numéricos e passam pelas condições da árvore de decisão até que termine dentro de uma categoria do peso.<br><br>A árvore foi construída usando o algoritmo J48 no software Weka, com um volume de 2.111 registros de dados em que 80% deles (1.689) foram usados para treino e os 20% restantes (422) foram usados para teste. Como resultado, o classificador obteve precisão de 93,4%.<br><br>O <i>dataset</i> usado pode ser encontrado no repositório de arquivos .arff do <a href='https://archive.ics.uci.edu/ml/datasets/Estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition+' target='_blank'><i>UCI Machine Learning Repository</i></a>. A pesquisa que desenvolveu esse <i>dataset</i> pode ser encontrada na plataforma <a href='https://www.sciencedirect.com/science/article/pii/S2352340919306985?via%3Dihub' target='_blank'><i>ScienceDirect</i></a>.<br><br><b>Tecnologias usadas: </b>Python, Streamlit, Weka, J48.</p><br><a href='https://share.streamlit.io/guilhermedonizetti/classificador_obesidade/main.py' target='_blank'><button class='primary button'>Acesse ao programa!</button></a>&nbsp;&nbsp;<a href='https://github.com/guilhermedonizetti/Classificador_Obesidade' target='_blank'>código</a>"
+            "subtitulo": "Interface baseada em árvore de decisão para classificação de nível de peso a partir de características físicas e hábitos de vida.",
+            "imagem": "https://github.com/guilhermedonizetti/Classificador_Obesidade/blob/master/images/imagem1.png?raw=true",
+            "tags": "Machine Learning|Árvore de Decisão|Weka|J48|Streamlit|Python",
+            "tipo": "Aplicação de Machine Learning",
+            "dominio": "Classificação supervisionada e saúde baseada em dados",
+            "papel_tecnico": "Treinamento, interpretação do modelo, interface e implementação da classificação",
+            "complexidade": "Conversão de respostas em atributos, aplicação de árvore de decisão e apresentação de classificação final",
+            "contexto": "O projeto cria uma interface para classificar uma pessoa em categorias de peso a partir de 16 campos relacionados a características físicas e estilo de vida. O modelo foi construído com algoritmo J48 no Weka, usando dataset público.",
+            "arquitetura": "O usuário preenche um formulário, as respostas são convertidas em valores numéricos, passam pelas condições da árvore de decisão e resultam em uma classe de peso.",
+            "arquitetura_topicos": "01 / formulário|02 / atributos|03 / modelo|04 / classificação",
+            "arquitetura_titulo": "Entrada do usuário|Transformação dos dados|Árvore de decisão|Categoria final",
+            "arquitetura_descricao": "O usuário responde campos físicos e comportamentais.|As respostas são convertidas para atributos compatíveis com o modelo.|A árvore J48 percorre regras até encontrar uma folha.|A aplicação apresenta a categoria de classificação.",
+            "decisao_titulo": "Usar árvore de decisão|Criar interface simples|Basear em dataset público",
+            "decisao_descricao": "Árvores são interpretáveis e facilitam explicar a classificação.|A interface torna o modelo acessível a usuários não técnicos.|O dataset público permite validação e reprodutibilidade do estudo.",
+            "tecnologias": "Python, Streamlit, Weka e J48.",
+            "tags_tecnologias": "Python|Streamlit|Weka|J48|Machine Learning",
+            "atuacao": "Construção da interface, uso do modelo de classificação e organização do fluxo de entrada, processamento e saída.",
+            "galeria": "https://github.com/guilhermedonizetti/Classificador_Obesidade/blob/master/images/imagem1.png?raw=true",
+            "prox_projeto": "7"
         },
+
         "7": {
-            "titulo": "API",
-            "descricao": "<p>A API possui uma função simples de responder às requisições GET para entregar dados de latitude e longitude de cidades do Vale do Paraíba.<br>É possível requisitar cidades individuais ou todas, de qualquer forma o tráfego é muito pequeno por conta do conjunto de cidades existentes serem igual a 39. Por esse motivo, se tornou a API usada pelo <a href='ia_rotas_cidades.html' class='icon'>Rotas Cidades</a> que realiza várias requisições a cada execução.<br><br><b>Tecnologias usadas: </b>Python, Flask, Postman, RESTful e Heroku.</p><br><a href='https://api-valeparaiba.herokuapp.com/' target='_blank'><button class='primary button'>Acesse ao programa!</button></a>&nbsp;&nbsp;<a href='https://github.com/guilhermedonizetti/API_ValeParaiba'>código</a>"
+            "topico": "api.rest / geographic.data",
+            "titulo": "API Vale do Paraíba",
+            "subtitulo": "API REST para disponibilização de latitude e longitude de cidades do Vale do Paraíba.",
+            "imagem": "../assets/projetos/api-vale-paraiba.jpg",
+            "tags": "API|Flask|REST|Geolocalização|Python|Heroku",
+            "tipo": "API REST",
+            "dominio": "Dados geográficos e integração entre aplicações",
+            "papel_tecnico": "Desenvolvimento da API, estruturação dos endpoints e disponibilização dos dados",
+            "complexidade": "Entrega de dados geográficos padronizados para consumo por aplicações externas",
+            "contexto": "A API responde requisições GET para fornecer dados de latitude e longitude de cidades do Vale do Paraíba. Ela foi usada como suporte ao projeto Rotas Cidades.",
+            "arquitetura": "A API expõe endpoints para consulta individual ou completa das cidades, permitindo que outras aplicações consumam os dados geográficos de forma simples.",
+            "arquitetura_topicos": "01 / dados|02 / endpoint|03 / consumo|04 / integração",
+            "arquitetura_titulo": "Base de cidades|Rotas HTTP|Resposta JSON|Uso em outro projeto",
+            "arquitetura_descricao": "O conjunto contém cidades do Vale do Paraíba.|A API expõe requisições GET para consulta dos dados.|As respostas entregam latitude e longitude em formato consumível.|O projeto Rotas Cidades utiliza a API para alimentar cálculos.",
+            "decisao_titulo": "Criar serviço simples|Separar dados da aplicação|Usar REST",
+            "decisao_descricao": "O conjunto de dados é pequeno, então a API pode ser objetiva.|Separar dados permite reutilização em outros sistemas.|REST simplifica consumo por aplicações web e scripts.",
+            "tecnologias": "Python, Flask, Postman, RESTful e Heroku.",
+            "tags_tecnologias": "Python|Flask|REST|Postman|Heroku",
+            "atuacao": "Criação da API, definição das rotas, organização dos dados e integração com o projeto de rotas.",
+            "galeria": "../assets/projetos/api-vale-paraiba.jpg",
+            "prox_projeto": "8"
         },
+
         "8": {
-            "titulo": "Notas Fiscais",
-            "descricao": "<p>Desenvolvi o recurso para emitir automaticamente as Notas Fiscais de cada venda cadastrada no sistema de gestão da <a href='https://www.autoestimamaistop.com/' target='_blank'>Mais Top Estética</a>. Durante o processo de venda, o recurso já separa os dados da transação que serão usados na emissão da Nota. Os dados coletados são referentes à unidade (prestador), ao serviço/produto e ao cliente (tomador). Em seguida, um algoritmo identifica no banco de dados as Notas que devem ser emitidas e executa a emissão automaticamente, em <i>cron job</i>.<br></p><center><figure><img src='https://raw.githubusercontent.com/guilhermedonizetti/Portofolio/master/static/images/diagrama_nota_fiscal.avif' alt='Diagrama Nota Fiscal' width='90%'><figcaption>Diagrama do Fluxo da Nota Fiscal.</figcaption></figure></center><p><br>O algoritmo desenvolvido verifica se o prestador e o tomador da Nota possuem todos os dados necessários para executar a emissão. Após isso, cria o JSon e envia os dados para a SEFAZ do estado em que a venda acontece (NFC-e), ou para a prefeitura do município (NFS-e).<br><br>Se a SEFAZ/Prefeitura aprovar ou rejeitar a emissão, o sistema será atualizado por <i>webhook</i>. Com isso, desenvolvi um algoritmo capaz de lidar com os diferentes retornos possíveis (aprovado, rejeitado, processando, cancelado, etc.), e executar tarefas como registro de logs, atualização do status da emissão, entre outros. Após a aprovação da Nota Fiscal, o PDF e o XML são disponibilizados automaticamente numa página de controle das Notas.<br><br>As unidades podem gerenciar os dados fiscais, como por exemplo: alíquota, regime tributário, código de serviço, razão social, entre outros.<br><blockquote><b>Obs.: Emitir Notas Fiscais é uma obrigação tributária de qualquer empresa que comercializa serviços e/ou produtos. Quem sonega, comete um crime. Assim, o recurso de emissão de NFS-e/NFC-e automático, além de ser mais prático e facilitado para a empresa, ajuda a mesma a se manter regularizada, se mostrando como um recurso de grande valor para sistemas de gestão e comercial.</b></blockquote><p><br>O maior desafio para desenvolver foi compreender a questão fiscal relacionado à emissão de Notas, assunto da área de Contabilidade. Através de conversas com Contadores por telefone e e-mail, consegui aprender e programei e revisei a eficiência do recurso. Atualmente, as unidades de diferentes estados do país emitem a NF por essa programação. Desde que o recurso entrou em Produção, todas as rejeições estão relacionadas apenas à irregularidades do prestador ou do tomador (CPF inválido, certificado digital vencido, entre outros), e não ao sistema.<br><br>Essa programação foi dessenvolvida para a empresa mencionada no começo, com isso não apresento mais detalhes ou imagens do resultado.<br><br><br><b>Tecnologias usadas: </b>PHP, SQL, Postman, RESTful API.</p>"
+            "topico": "business.system / fiscal.automation",
+            "titulo": "Emissão Automática de Notas Fiscais",
+            "subtitulo": "Recurso para emissão automática de NFS-e e NFC-e a partir de vendas registradas em sistema de gestão.",
+            "imagem": "https://raw.githubusercontent.com/guilhermedonizetti/Portofolio/master/static/images/diagrama_nota_fiscal.avif",
+            "tags": "Notas Fiscais|NFS-e|NFC-e|Webhook|API|Automação Fiscal",
+            "tipo": "Automação fiscal / Sistema de gestão",
+            "dominio": "Fiscal, faturamento e integração com órgãos emissores",
+            "papel_tecnico": "Desenvolvimento backend, integração fiscal, regras de emissão e tratamento de retornos",
+            "complexidade": "Validação fiscal, geração de JSON, comunicação com SEFAZ e prefeituras, webhooks, logs e status de emissão",
+            "contexto": "O recurso foi desenvolvido para emitir automaticamente notas fiscais de vendas cadastradas em um sistema de gestão. A emissão depende de dados do prestador, tomador, serviço ou produto e regras fiscais específicas.",
+            "arquitetura": "O sistema identifica vendas pendentes de emissão, valida os dados fiscais necessários, gera o JSON, envia para SEFAZ ou prefeitura e atualiza o status conforme retorno via webhook.",
+            "arquitetura_topicos": "01 / venda|02 / validação|03 / emissão|04 / retorno",
+            "arquitetura_titulo": "Venda cadastrada|Dados fiscais conferidos|Envio ao órgão emissor|Atualização por webhook",
+            "arquitetura_descricao": "A venda gera dados necessários para emissão da nota.|O sistema valida prestador, tomador, serviço, regime e dados obrigatórios.|O JSON é enviado para SEFAZ ou prefeitura conforme o tipo de nota.|O webhook atualiza status, logs, PDF e XML.",
+            "decisao_titulo": "Automatizar emissão|Validar antes do envio|Tratar retornos diversos",
+            "decisao_descricao": "A emissão manual gera esforço operacional e risco de atraso.|A validação reduz rejeições causadas por dados incompletos.|O sistema precisa lidar com aprovado, rejeitado, processando, cancelado e outros estados.",
+            "tecnologias": "PHP, SQL, Postman e RESTful API.",
+            "tags_tecnologias": "PHP|SQL|REST API|Postman|Webhook|NFS-e|NFC-e",
+            "atuacao": "Desenvolvimento da lógica de emissão, integração com serviços fiscais, tratamento de retornos, controle de status e registros de operação.",
+            "galeria": "https://raw.githubusercontent.com/guilhermedonizetti/Portofolio/master/static/images/diagrama_nota_fiscal.avif",
+            "prox_projeto": "9"
         },
+
         "9": {
+            "topico": "payment.integration / checkout",
             "titulo": "Pagamento Online",
-            "descricao": "<p>Trata-se de uma integração com uma conta Mercado Pago através da API Checkout Transparente. A API é disponibilizada pelo próprio banco para que desenvolvedores programem seu prórpio checkout online.<br><br>Programei para que no processo de venda, já fosse gerado um link de cobrança para ser enviado ao cliente. Na página de cobrança, alguns dados já são trazidos do banco de dados, como documento, nome e e-mail. A interface também exibe a descrição da compra e o valor. Após abrir o link de cobrança, o cliente pode pagar por QRCode ou código, em casos de pagamento por PIX. Se o pagamento for por boleto, um PDF é gerado na hora e também enviado no e-mail informado. Para pagamentos em Cartão, Débito ou Crédito, o cliente deve inserir seus dados de cartão e efetuar o pagamento.<br></p><center><figure><img src='https://http2.mlstatic.com/storage/dx-devsite/docs-assets/images/api/api-integration-flowchart-cardform-pt.png?v=4.1.5-rc-5' alt='Diagrama de Sequência - Pagamento por Cartão' width='90%'><figcaption>Diagrama de Sequência - Pagamento por Cartão. Fonte: Mercado Pago</figcaption></figure></center><p><br>O cliente conta com uma interface amigável que apresenta o status do pagamento, se aprovado, rejeitado ou em processamento. E esse foi um dos motivos principais em selecionar a ferramenta Transparente do Mercado Pago, pois a ideia é que a ferramenta seja 'transparente', isto é, não interferir no que o usuário está enxergando, permitindo manter os padrões visuais do sistema da empresa em todas as etapas do pagamento, sem dar a sensação de que está usando um sistema de terceiro.<br><br>O recurso que desenvolvi também inclui o controle das credenciais da conta de cada unidade da empresa. Para trazer os dados sensíveis, tais como tokens e IDs das contas, apliquei um nível maior de segurança ao armazená-los e comunicá-los. No formulário de cobrança também foi aplicado controle de acesso aos dados e criptografia. Além da própria segurança oferecida pelo SDK do Mercado Pago, o recurso em geral atendeu aos requisitos de configuração e segurança para operar em Produção e com isso apresenta alto índice de aprovação dos pagamentos.<br><br>O recurso em geral conta com:</p><li>Geração de links de cobrança</li><li>Página para controle de credenciais</li><li>Página de cobrança a ser enviada para o cliente</li><li>Integração segura com a conta do Mercado Pago</li><p><br>O Pagamento Online é um recurso desenvolvido para o sistema de gestão da empresa <a href='https://www.autoestimamaistop.com/' target='_blank'>Mais Top Estética</a>, por esse motivo não apresento a interface nem os detalhes da programação em geral.<br><br><br><b>Tecnologias usadas: </b>PHP, JavaScript, SQL, Postman, API Checkout Transparente e conta no Mercado Pago.</p>"
+            "subtitulo": "Integração com Checkout Transparente do Mercado Pago para geração de cobranças, pagamentos e controle de credenciais.",
+            "imagem": "https://http2.mlstatic.com/storage/dx-devsite/docs-assets/images/api/api-integration-flowchart-cardform-pt.png?v=4.1.5-rc-5",
+            "tags": "Pagamento Online|Mercado Pago|Checkout|PIX|Boleto|Cartão|API",
+            "tipo": "Integração de pagamento",
+            "dominio": "Pagamentos digitais, cobrança e transações online",
+            "papel_tecnico": "Integração com API, segurança de credenciais, checkout e controle de status",
+            "complexidade": "Geração de links, checkout transparente, múltiplos meios de pagamento, credenciais por unidade e status transacional",
+            "contexto": "O recurso foi desenvolvido para gerar cobranças online a partir do processo de venda, permitindo pagamento por PIX, boleto, débito ou crédito com interface integrada ao padrão visual do sistema.",
+            "arquitetura": "A venda gera um link de cobrança com dados pré-preenchidos. A página de pagamento se comunica com a API do Mercado Pago, processa o pagamento e apresenta o status ao cliente.",
+            "arquitetura_topicos": "01 / venda|02 / cobrança|03 / pagamento|04 / status",
+            "arquitetura_titulo": "Dados da venda|Link de pagamento|Checkout transparente|Retorno transacional",
+            "arquitetura_descricao": "A venda fornece valor, cliente e descrição da compra.|O sistema gera uma página ou link de cobrança.|O cliente paga por PIX, boleto ou cartão.|A interface apresenta aprovado, rejeitado ou em processamento.",
+            "decisao_titulo": "Usar checkout transparente|Proteger credenciais|Preservar experiência visual",
+            "decisao_descricao": "O checkout transparente evita sensação de sair do sistema.|Tokens e IDs exigem armazenamento e comunicação segura.|A interface mantém consistência com o sistema da empresa.",
+            "tecnologias": "PHP, JavaScript, SQL, Postman, API Checkout Transparente e conta Mercado Pago.",
+            "tags_tecnologias": "PHP|JavaScript|SQL|Postman|Mercado Pago|API|PIX|Boleto|Cartão",
+            "atuacao": "Desenvolvimento da integração de cobrança, controle de credenciais, página de pagamento, comunicação com API e tratamento do status transacional.",
+            "galeria": "https://http2.mlstatic.com/storage/dx-devsite/docs-assets/images/api/api-integration-flowchart-cardform-pt.png?v=4.1.5-rc-5",
+            "prox_projeto": "10"
         },
+
         "10": {
+            "topico": "computer.vision / barcode",
             "titulo": "Leitor de Código de Barras",
-            "descricao": "<p>O programa tem o objetivo de capturar a imagem de um código de barras e identificar o valor ($) associado ao código. Desenvolvi uma interface onde o usuário pode optar por abrir a câmera ou não. Ao iniciar a câmera, o usuário pode registrar uma imagem do código de barras clicando em um botão. Quando fizer a captura da imagem, o programa faz o processamento do código e então destaca o valor dele.<br><br>Além de preço, muitas outras informações poderiam ser associadas ao código para que, no processo de venda, todas as informações do produto fossem identificadas com mais facilidade. O padrão de código de barras usado foi EAN13. Programei a geração de várias imagens com código de barras para testar o funcionamento do programa, em que na maioria dos casos a identificação foi bem sucedida, exceto em locais muito claros onde o contraste das cores preto e branco são menores.<br><br><b>Tecnologias usadas: </b>Python, Streamlit, OpenCV, Pyzbar, Barcode e webcam.</p><a href='https://github.com/guilhermedonizetti/Leitor_Codigo_Barras' target='_blank'>código</a>"
+            "subtitulo": "Aplicação para capturar imagens de códigos de barras e identificar valores associados ao padrão EAN13.",
+            "imagem": "https://github.com/guilhermedonizetti/Leitor_Codigo_Barras/blob/master/images/codigo_barras.png?raw=true",
+            "tags": "Visão Computacional|Código de Barras|OpenCV|Pyzbar|Streamlit|Python",
+            "tipo": "Aplicação de visão computacional",
+            "dominio": "Leitura de código de barras e automação de identificação",
+            "papel_tecnico": "Captura de imagem, processamento visual e identificação de código",
+            "complexidade": "Uso de webcam, captura de imagem, leitura de padrão EAN13 e associação de valores",
+            "contexto": "O programa captura a imagem de um código de barras e identifica o valor associado a ele. A interface permite abrir a câmera, registrar uma imagem e processar o código.",
+            "arquitetura": "A aplicação usa webcam ou imagem capturada, executa processamento visual para identificar o código EAN13 e retorna o valor associado.",
+            "arquitetura_topicos": "01 / câmera|02 / captura|03 / processamento|04 / identificação",
+            "arquitetura_titulo": "Entrada visual|Registro da imagem|Leitura do código|Valor associado",
+            "arquitetura_descricao": "O usuário ativa a câmera ou fornece uma imagem.|A aplicação captura o frame com o código.|Bibliotecas de visão computacional processam a imagem.|O valor associado ao código é identificado e exibido.",
+            "decisao_titulo": "Usar webcam|Aplicar padrão EAN13|Gerar imagens de teste",
+            "decisao_descricao": "A webcam permite simular uso prático em pontos de venda.|EAN13 é um padrão comum em produtos comerciais.|As imagens geradas permitiram validar diferentes condições de leitura.",
+            "tecnologias": "Python, Streamlit, OpenCV, Pyzbar, Barcode e webcam.",
+            "tags_tecnologias": "Python|Streamlit|OpenCV|Pyzbar|Barcode|Webcam",
+            "atuacao": "Construção da interface, processamento da imagem, leitura do código e validação com imagens geradas para teste.",
+            "galeria": "https://github.com/guilhermedonizetti/Leitor_Codigo_Barras/blob/master/images/codigo_barras.png?raw=true",
+            "prox_projeto": "11"
         },
+
         "11": {
+            "topico": "data.visualization / weather.api",
             "titulo": "Previsão do Tempo",
-            "descricao": "<p>O programa realiza consulta de dados meteorológicos (previsão do tempo) para uma determinada cidade e exibe em um gráfico de linhas as temperaturas mínimas e máximas para os próximos 10 dias. Os dados utilizados são consumidos de uma API (HG Brasil).<br>Além de visualizar os dados, o usuário pode baixar uma imagem do gráfico em PNG como forma de exportar o conteúdo.<br><br>Ele funciona da seguinte forma: o usuário seleciona uma cidade e realiza a busca, o programa faz uma requisição Ajax a uma função do Python que consome a API e retorna a previsão, com o Python organizo os dados para serem exibidos (dados de datas, cidade/estado, temperaturas mínimas e máximas). Com o retorno da requisição o programa gera o gráfico de linhas e passa a exibir o botão de baixar imagem (do gráfico).<br>Através desse trabalho alguns desafios foram resolvidos, são eles:<br><li><b>Atualização do gráfico:</b></li> os gráficos feitos com ChartJS são gerados dentro de um elemento canvas HTML, esse elemento só pode ser criado com o mesmo ID uma vez na página; teoricamente, não é possível criar outro canvas ou atualizar. A medida adotada foi criar e destruir  o elemento canvas dinamicamente com JavaScript. Dessa forma, toda vez que consultar sobre uma cidade diferente, o programa destrói o gráfico atual e recria dando a sensação de estar atualizando e sem fazer <i>refresh</i> na página.<br><li><b>Escala única e igual:</b></li> geralmente, gráficos com duas linhas de valores diferentes adotam escalas diferentes (uma para cada linha), e costumam ser posicionadas uma escala à esquerda e outra à direita, conforme mostra a documentação da biblioteca ChartJS. Como meu objetivo era que ambas fossem exibidas em uma mesma escala, adotei a medida de incluir a menor e a maior temperatura nos vetores de mínima e máxima, e no menor valor tirei 5 e no maior adicionei 10 para que houvesse um espaço no gráfico que facilitasse a visualização. Esses valores adicionados a mais influenciam na escala, mas não são exibidos. Os dois vetores de temperatura passam a ter o mesmo limite mínimo e máximo e assim usam a mesma escala.<li><b>Exportar gráfico:</b></li> por padrão, os gráficos feitos com ChartJS não possuem opção nativa de serem exportados. Porém, como eu queria fazer a exportação da imagem gerada, adotei a medida de pegar o objeto do gráfico e converter para imagem através do base64 do JavaScript. O hash do resultado é usado como link do download no botão de baixar imagem.<li><b>Não atualizar a página:</b></li> como expliquei acima, para não atualizar a página recriando um elemento canvas, fiz a criação e destruição dinâmica pelo JavaScript. Porém, na requisição ao selecionar uma nova cidade, pelo comportamento comum de um formulário a página se atualiza. Para isso usei o Ajax passando o código IBGE da cidade e fiz requisições em uma rota do Flask que chamava a função que realiza a requisição na API.<br><br><b>Tecnologias usadas: </b>Python, Flask, JavaScript, ChartJS, HTML, HG Brasil (API).</p><br><div class='box alt'><div class='row gtr-50 gtr-uniform'><div class='col-12'><span class='image featured'><img src='../images/geral/img17.png' alt='' /></span></div><div class='col-6'><span class='image featured'><img src='../images/geral/img18.png' alt='' /></span></div><div class='col-6'><span class='image featured'><img src='../images/geral/img19.gif' alt='' /></span></div></div></div>"
+            "subtitulo": "Aplicação para consulta meteorológica, visualização de temperaturas em gráfico e exportação da imagem do resultado.",
+            "imagem": "../images/geral/img17.png",
+            "tags": "Flask|JavaScript|ChartJS|API|Ajax|Visualização de Dados",
+            "tipo": "Web app / Visualização de dados",
+            "dominio": "Consulta meteorológica, APIs e gráficos dinâmicos",
+            "papel_tecnico": "Backend Flask, integração com API, atualização dinâmica de gráficos e exportação visual",
+            "complexidade": "Requisição assíncrona, recriação dinâmica de canvas, escala compartilhada e exportação de gráfico",
+            "contexto": "O programa consulta dados meteorológicos de uma cidade e exibe temperaturas mínimas e máximas dos próximos dias em gráfico de linhas. Também permite exportar o gráfico em PNG.",
+            "arquitetura": "A aplicação recebe uma cidade, consulta uma API externa, organiza os dados no backend e retorna ao frontend para geração dinâmica do gráfico com ChartJS.",
+            "arquitetura_topicos": "01 / busca|02 / API|03 / gráfico|04 / exportação",
+            "arquitetura_titulo": "Cidade selecionada|Consulta meteorológica|Renderização dinâmica|Download da imagem",
+            "arquitetura_descricao": "O usuário seleciona uma cidade para consulta.|O backend consome a API HG Brasil e organiza os dados.|O frontend cria ou recria o gráfico com ChartJS.|O gráfico pode ser convertido em imagem e baixado.",
+            "decisao_titulo": "Usar Ajax|Recriar canvas|Padronizar escala",
+            "decisao_descricao": "Ajax evita recarregar a página a cada consulta.|O canvas precisa ser recriado para atualizar corretamente o gráfico.|A escala única facilita comparar temperaturas mínimas e máximas.",
+            "tecnologias": "Python, Flask, JavaScript, ChartJS, HTML e API HG Brasil.",
+            "tags_tecnologias": "Python|Flask|JavaScript|ChartJS|HTML|Ajax|API",
+            "atuacao": "Implementação do backend, consumo da API, organização dos dados, atualização dinâmica do gráfico e exportação em imagem.",
+            "galeria": "../images/geral/img17.png|../images/geral/img18.png|../images/geral/img19.gif",
+            "prox_projeto": "12"
         },
+
         "12": {
+            "topico": "data.visualization / mysql.dashboard",
             "titulo": "Zenith",
-            "descricao": "<p>O Zenith é um programa para visualização de dados em nível local desenvolvido para o evento de tecnologia Acelera da Fatec Cruzeiro. Para usuários que não tem noções de programação, banco de dados e/ou manipulação de dados, o Zenith oferece um grande auxílio. Independente do banco de dados o Zenith pode se conectar, o único requisito é que a base de dados seja MySQL.<br><br>O programa recebe os dados de conexão com a base de dados, se estabelecer conexão com sucesso retorna as tabelas do banco. Após selecionar a tabela, o usuário informa qual campo estará no eixo X e Y, ou qual informação pretende acumular. É possível definir um período de atualização do gráfico, a frequência de atualização deve ser um valor inteiro referente aos segundos. Apesar de ser um programa para lidar diretamente com BDs, o Zenith possui nenhum banco de dados, apenas usou o MySQL para ser modelado e testado simulando BDs de outros usuários.<br><br><b>Participação no trabalho: </b><a href='https://github.com/SACRIER'>Luiz Fernando Rodrigues</a> e Pedro Luiz de Oliveira.<br><b>Tecnologias usadas: </b>PHP, MySQL, ChartJS e Google Developer.</p>"
+            "subtitulo": "Ferramenta para visualização local de dados a partir de bases MySQL, com gráficos configuráveis pelo usuário.",
+            "imagem": "../assets/projetos/zenith.jpg",
+            "tags": "PHP|MySQL|ChartJS|Dashboard|Visualização de Dados",
+            "tipo": "Ferramenta de visualização de dados",
+            "dominio": "Banco de dados, dashboards e visualização local",
+            "papel_tecnico": "Desenvolvimento da interface, conexão com banco e geração de gráficos",
+            "complexidade": "Conexão dinâmica com bases MySQL, seleção de tabelas, campos, agregações e atualização periódica",
+            "contexto": "O Zenith foi desenvolvido para o evento Acelera da Fatec Cruzeiro com o objetivo de facilitar a visualização de dados para usuários sem domínio técnico em programação ou banco de dados.",
+            "arquitetura": "O usuário informa dados de conexão MySQL, seleciona uma tabela, escolhe campos para eixos ou acumulação e define a frequência de atualização dos gráficos.",
+            "arquitetura_topicos": "01 / conexão|02 / tabelas|03 / configuração|04 / gráfico",
+            "arquitetura_titulo": "Banco MySQL|Leitura da estrutura|Campos e período|Visualização atualizada",
+            "arquitetura_descricao": "O sistema recebe credenciais e tenta conexão com a base.|Ao conectar, retorna as tabelas disponíveis.|O usuário escolhe eixo X, eixo Y, agregação e frequência.|O gráfico é exibido e atualizado conforme configuração.",
+            "decisao_titulo": "Não armazenar dados|Aceitar bases externas|Simplificar gráficos",
+            "decisao_descricao": "O Zenith atua como camada de visualização, não como banco próprio.|A conexão com bases externas aumenta flexibilidade.|A interface reduz barreira para usuários não técnicos.",
+            "tecnologias": "PHP, MySQL, ChartJS e Google Developer.",
+            "tags_tecnologias": "PHP|MySQL|ChartJS|Google Developer|Dashboard",
+            "atuacao": "Participação no desenvolvimento da ferramenta, conexão com banco, configuração de gráficos e visualização de dados.",
+            "galeria": "../assets/projetos/zenith.jpg",
+            "prox_projeto": "13"
         },
+
         "13": {
-            "titulo": "Plataforma de otimização na relação entre empregado e empregador na Construção Civil",
-            "descricao": "<p>O TCC desenvolvido no curso técnico em Informática foi desenvolvido para busca rápida, com comodidade e competitividade, de profissionais de C. Civil. O usuário profissional deve criar sua conta e preencher seu perfil, que inclui informações de: idade, cidade, especialidade, contatos, entre outros.<br><br>Por outro lado, esses dados podem ser encontrados por pessoas que precisem de contratar algum profissional da área. A busca possui 3 filtros:<br><li>Especialidade: pedreiro, servente de obras, pintor, encanador, técnico em Edificações, engenheiro, etc.</li><li>Estado e Cidade: de onde quer encontrar os profissionais.</li>Essas opções filtram os resultados e exibe uma lista com os registros existentes e o usuário pode contatar aquele que achar mais conveniente segundo seus critérios.<br><br><b>Tecnologias usadas: </b>PHP, MySQL, HTML5, JS e CSS.</p>"
+            "topico": "technical.course / web.platform",
+            "titulo": "Plataforma para Construção Civil",
+            "subtitulo": "Sistema web para aproximar profissionais da construção civil e pessoas interessadas em contratar serviços.",
+            "imagem": "../assets/projetos/construcao-civil.jpg",
+            "tags": "PHP|MySQL|HTML|CSS|JavaScript|Sistema Web",
+            "tipo": "TCC Técnico / Plataforma web",
+            "dominio": "Marketplace profissional e busca por prestadores",
+            "papel_tecnico": "Desenvolvimento web, cadastro, busca e filtros",
+            "complexidade": "Cadastro de profissionais, perfis, filtros por especialidade, estado e cidade",
+            "contexto": "O projeto foi desenvolvido como TCC do curso técnico em Informática. A plataforma tinha como objetivo facilitar a busca por profissionais da construção civil com comodidade e competitividade.",
+            "arquitetura": "Profissionais criam perfis com dados pessoais, cidade, especialidade e contatos. Usuários interessados aplicam filtros e visualizam uma lista de profissionais compatíveis.",
+            "arquitetura_topicos": "01 / cadastro|02 / perfil|03 / busca|04 / contato",
+            "arquitetura_titulo": "Conta profissional|Dados de atuação|Filtros de procura|Conexão entre partes",
+            "arquitetura_descricao": "O profissional cria sua conta na plataforma.|O perfil reúne idade, cidade, especialidade e contato.|O contratante filtra por especialidade, estado e cidade.|A lista permite escolher e contatar o profissional.",
+            "decisao_titulo": "Criar busca filtrada|Valorizar perfil profissional|Resolver demanda local",
+            "decisao_descricao": "Filtros reduzem ruído e aceleram a contratação.|O perfil funciona como vitrine do prestador.|O problema é concreto e próximo da realidade do setor.",
+            "tecnologias": "PHP, MySQL, HTML5, JavaScript e CSS.",
+            "tags_tecnologias": "PHP|MySQL|HTML5|CSS|JavaScript",
+            "atuacao": "Desenvolvimento do sistema, estrutura de cadastro, filtros de busca e organização da experiência da plataforma.",
+            "galeria": "../assets/projetos/construcao-civil.jpg",
+            "prox_projeto": "14"
         },
+
         "14": {
+            "topico": "software.engineering / email.client",
             "titulo": "Sendex",
-            "descricao": "<p>O Sendex é um programa para envio de e-mails usando o Gmail. Desenvolvido dentro das disciplinas de Testes de Software e Laboratório de Engenharia de Software. Através da interface o usuário informa os campos obrigatórios e opcionais que deverão compor o e-mail. Após isso o programa tenta conexão com um agente SMTP local instalado na máquina e dará continuidade na entrega do correio.<br><br>O programa gerencia registros de logs, autenticação de usuário, autenticação do agente SMTP e anexo de arquivos. Acrescenta as seguintes vantagens:<br><li>O Sendex precisa de internet apenas para entregar o email ao servidor SMTP do Gmail, então opera com baixa qualidade de internet.</li><li>Mesmo com o programa aberto, ele só realiza login quando um email é enviado e após isso é imediatamente desconectado.</li><li>O programa é 100% específico na sua atividade de envio de emails.</li><br><br><b>Participação no trabalho: </b><a href='https://github.com/SACRIER'>Luiz Fernando Rodrigues</a>, Vitória Narciso e Zheng Darong.<br><b>Tecnologias usadas: </b>Python, Tkinter e sSMTP.</p><a href='https://github.com/guilhermedonizetti/Sendex'>código</a>"
+            "subtitulo": "Aplicação desktop para envio de e-mails via Gmail com agente SMTP local, logs, autenticação e anexos.",
+            "imagem": "../assets/projetos/sendex.jpg",
+            "tags": "Python|Tkinter|SMTP|Gmail|Logs|Desktop",
+            "tipo": "Aplicação desktop / Envio de e-mails",
+            "dominio": "Comunicação, SMTP e engenharia de software",
+            "papel_tecnico": "Desenvolvimento da interface, autenticação, logs e envio de mensagens",
+            "complexidade": "Envio controlado de e-mails, autenticação sob demanda, anexos e operação com baixa qualidade de internet",
+            "contexto": "O Sendex foi desenvolvido nas disciplinas de Testes de Software e Laboratório de Engenharia de Software. O objetivo era criar uma ferramenta específica para envio de e-mails usando Gmail e agente SMTP local.",
+            "arquitetura": "A aplicação recebe campos obrigatórios e opcionais de e-mail, autentica no agente SMTP apenas no momento do envio, registra logs e permite anexos.",
+            "arquitetura_topicos": "01 / interface|02 / autenticação|03 / envio|04 / logs",
+            "arquitetura_titulo": "Formulário de e-mail|Conexão SMTP|Entrega da mensagem|Registro operacional",
+            "arquitetura_descricao": "O usuário informa destinatário, assunto, corpo e anexos.|A autenticação ocorre apenas quando necessário.|O SMTP local encaminha a mensagem ao Gmail.|Logs registram eventos e falhas do processo.",
+            "decisao_titulo": "Autenticar sob demanda|Focar em tarefa específica|Operar com baixa internet",
+            "decisao_descricao": "Login apenas durante envio reduz exposição da sessão.|A aplicação não tenta ser um cliente completo de e-mail.|O envio depende de internet apenas na etapa final com o servidor SMTP.",
+            "tecnologias": "Python, Tkinter e sSMTP.",
+            "tags_tecnologias": "Python|Tkinter|sSMTP|Gmail|Logs",
+            "atuacao": "Participação no desenvolvimento da aplicação, interface de envio, autenticação, registros de log e suporte a anexos.",
+            "galeria": "../assets/projetos/sendex.jpg",
+            "prox_projeto": "15"
         },
+
         "15": {
+            "topico": "ai.integration / whatsapp",
             "titulo": "Contatinho Inteligente",
-            "descricao": "<p>O <b>Contatinho Inteligente</b> é a integração que programei com o <b>WhatsApp</b> e o <b>ChatGPT</b>. A cada interação feita com o meu número de WhatsApp é disparado um webhook com o Json que detalha a interação. Exemplos de interação são: receber mensagens/áudios/stickers/etc, receber reação, status respondido/visualizado, entre outros. O que fiz então? Ignorei os hooks de qualquer tipo de interação e tratei o Json apenas quando eu recebia uma mensagem de texto.</p><p>Dessa forma, programei a requisição à API da OpenAI e enviei a mensagem que recebi como payload da requisição. Assim que a API me responde, fiz uma requisição para o WhatsApp enviando o <i>response</i> do ChatGPT como se fosse minha resposta para o mesmo número que me enviou a mensagem. O resultado disso pode ser visto no vídeo abaixo:</p><br><center><iframe width='560' height='315' src='https://www.youtube.com/embed/k-1kAMNdakY' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen> </iframe></center><br><p>A verdadeira ideia desse projeto foi facilitar a consulta ao ChatGPT, sem muitos passos. Considerei, também, o fato de que todo brasileiro já tem o WhatsApp instalado e tem familiaridade com sua interface. Então, pensei que pudesse ser interessante aproveitar a interface do WhatsApp com toda sua facilidade de uso e popularidade para fazer essa integração. Em resumo, programei um recurso que interage com o WhatsApp e com a Inteligência Artificial redirecionando dados de um para o outro. O fluxo correto desses redirecionamento são exibidos abaixo, com a ordem enumerada.</p> <br><center><figure><img src='../images/geral/img7.png' alt='Diagrama WhatsApp' width='50%'><figcaption>Fluxo da requisição e resposta.</figcaption></figure></center><p><br>Através dessa programação, o acesso à IA ficou mais simples, pois a comunicação seria através do WhatsApp dispensando criação de conta, login e em alguns casos poupa até mesmo o consumo de dados móveis (se seu plano de internet possui WhatsApp ilimitado).</p><br><p><b>Tecnologias usadas: </b>Laravel, API Chat Open AI (modelo Davinci-003), API WhatsApp, InfinityFree (hospedagem).</p>"
+            "subtitulo": "Integração entre WhatsApp e ChatGPT para facilitar consultas à inteligência artificial diretamente por mensagem.",
+            "imagem": "../images/geral/img7.png",
+            "tags": "WhatsApp|ChatGPT|Webhook|Laravel|API|IA Aplicada",
+            "tipo": "Integração com IA / Automação conversacional",
+            "dominio": "Mensageria, webhooks e inteligência artificial aplicada",
+            "papel_tecnico": "Integração de APIs, tratamento de webhook e redirecionamento de mensagens",
+            "complexidade": "Recebimento de eventos do WhatsApp, filtro de mensagens, requisição à IA e resposta automática ao usuário",
+            "contexto": "O projeto integra WhatsApp e ChatGPT para permitir consultas à IA por meio de uma interface já conhecida pelo usuário. A ideia foi reduzir passos de acesso e aproveitar a familiaridade do WhatsApp.",
+            "arquitetura": "Cada interação no WhatsApp dispara um webhook. O sistema filtra mensagens de texto, envia o conteúdo para a API de IA e retorna a resposta ao mesmo contato via API do WhatsApp.",
+            "arquitetura_topicos": "01 / webhook|02 / filtro|03 / IA|04 / resposta",
+            "arquitetura_titulo": "Evento recebido|Mensagem tratada|Consulta ao modelo|Envio ao WhatsApp",
+            "arquitetura_descricao": "O WhatsApp envia um JSON com detalhes da interação.|O sistema ignora eventos irrelevantes e trata mensagens de texto.|A mensagem é enviada como payload para a API de IA.|A resposta é enviada de volta ao usuário pelo WhatsApp.",
+            "decisao_titulo": "Usar WhatsApp como interface|Filtrar eventos|Automatizar resposta",
+            "decisao_descricao": "A interface é popular e reduz barreira de entrada.|Nem todo evento do webhook é relevante para a conversa.|A automação cria uma experiência fluida de pergunta e resposta.",
+            "tecnologias": "Laravel, API Chat OpenAI, API WhatsApp e InfinityFree.",
+            "tags_tecnologias": "Laravel|OpenAI API|WhatsApp API|Webhook|PHP|IA",
+            "atuacao": "Desenvolvimento da integração, tratamento do webhook, comunicação com API de IA e envio automático de respostas pelo WhatsApp.",
+            "galeria": "../images/geral/img7.png",
+            "prox_projeto": "16"
         },
+
         "16": {
+            "topico": "computer.vision / facial.analysis",
             "titulo": "Análise Facial: Reconhecimento de Sono",
-            "descricao": "<p>O algoritmo visa capturar frames de um rosto e tenta identificar se a pessoa está dormindo ou não, de forma rápida (em tempo real). Para inferir o estado de sono em uma pessoa foi levado em consideração alguns parâmetros:<br> <li><b>Abertura dos Olhos:</b> dos 468 pontos faciais identificados pela lib MediaPipe, 12 são nos olhos (6 em cada). Os pontos são posicionados na mesma linha dos cílios e acompanham os movimentos de abrir e fechar dos olhos. Com isso, foi calculado a distância euclidiana entre esses pontos para descobrir seus níveis de proximidade e perceber quando o olhou fechou ou abriu.<br><br><center><img src='https://user-images.githubusercontent.com/121525620/220442839-976a834d-80b7-4339-aa23-d74ad2c7925c.png' width='350' height='100'></center><br> <li><b>Abertura da Boca:</b> em um processo semelhante ao dos olhos, porém com 8 pontos identificados. Os pontos seguem a linha inferior dos lábios e por essa razão, mesmo sorrindo não significa que abriu a boca, pois os lábios podem estar juntos durante o sorriso.</li> <br> <center><img src='https://camo.githubusercontent.com/79c1362c54fceb9ae6232c8c9f5cd91350df1cd153aef816800698d35bd60c30/68747470733a2f2f63646e312e676e6172757375736572636f6e74656e742e636f6d2e62722f312f3536333639312f65353537303833342d336235372d346564302d623062632d3233323461333263646566632e706e67' width='250' height='150'></center> <br> <li><b>Quantidade de Piscadas:</b> existe uma relação direta entre o nível do sono e a quantidade de piscar de olhos por minuto, por isso a cada vez que o olho fecha é considerado 1 piscar a mais para saber se a quantidade está satisfatória ou se apresenta forte sobrecarga de sono.</li> <br> <li><b>Tempo:</b> a partir do momento que o olho e/ou a boca se fecham, inicia a contagem. Caso os olhos e a boca permaneçam fechados por 1.5 segundo, considera-se estado de sono e é exibido uma mensagem na tela 'Dormindo!' para mostrar que identificou a sonolência.</li> <br><br> A fórmula aplicada para calcular os dois primeiros itens acima são da seguinte representação: <br><br> <b>Olhos:</b><br> <img src='https://user-images.githubusercontent.com/121525620/220448363-c86a5d94-b614-4509-94e0-9b963e6b743e.png' width='300' height='100'> <br><br> <b>Boca:</b><br> <img src='https://user-images.githubusercontent.com/121525620/220448526-2166ddda-179b-422e-b9fe-cce64a7ffc92.png' width='500' height='60'> <br><br> Os parâmetros são calculados continuamente, enquanto a captura identifica os pontos faciais, e exibe na visualização das imagens conforme é mostrado abaixo:<br> <center><img src='https://user-images.githubusercontent.com/121525620/220447427-338fb558-00c9-479c-a993-66dbe5852bb5.png' width='450' height='350'></center> <br><br>  <a href='https://github.com/guilhermednztt/Analise_Sono?tab=readme-ov-file' target='_blank'><button class='primary button'>Acesse o código (repositório)</button></a> </p>"
+            "subtitulo": "Algoritmo de visão computacional para identificar sinais de sonolência em tempo real a partir de pontos faciais.",
+            "imagem": "https://user-images.githubusercontent.com/121525620/220447427-338fb558-00c9-479c-a993-66dbe5852bb5.png",
+            "tags": "Visão Computacional|MediaPipe|Python|Análise Facial|Sono|Tempo Real",
+            "tipo": "Algoritmo de visão computacional",
+            "dominio": "Análise facial, pontos de referência e detecção de sonolência",
+            "papel_tecnico": "Implementação da lógica de análise facial, cálculo de distâncias e inferência de estado",
+            "complexidade": "Captura em tempo real, landmarks faciais, cálculo euclidiano, abertura dos olhos, boca, piscadas e tempo de fechamento",
+            "contexto": "O algoritmo captura frames de um rosto e tenta identificar se a pessoa está dormindo ou apresentando sinais de sonolência. Para isso, considera abertura dos olhos, abertura da boca, quantidade de piscadas e tempo.",
+            "arquitetura": "A solução usa pontos faciais identificados em tempo real. Distâncias entre landmarks dos olhos e boca são calculadas continuamente para inferir fechamento, piscadas e possível estado de sono.",
+            "arquitetura_topicos": "01 / captura|02 / landmarks|03 / métricas|04 / inferência",
+            "arquitetura_titulo": "Frames do rosto|Pontos faciais|Cálculo de abertura|Estado de sono",
+            "arquitetura_descricao": "A câmera captura imagens do rosto em tempo real.|A biblioteca identifica landmarks nos olhos e boca.|Distâncias euclidianas indicam abertura, fechamento e piscadas.|Se os sinais persistem por tempo definido, o sistema indica sonolência.",
+            "decisao_titulo": "Usar landmarks faciais|Combinar olhos e boca|Considerar tempo",
+            "decisao_descricao": "Pontos faciais permitem medir variações sutis na face.|Olhos e boca juntos reduzem inferências frágeis.|O tempo evita classificar piscadas rápidas como sono.",
+            "tecnologias": "Python, MediaPipe, visão computacional e cálculo de distância euclidiana.",
+            "tags_tecnologias": "Python|MediaPipe|Computer Vision|Landmarks|Distância Euclidiana",
+            "atuacao": "Implementação da captura, análise dos pontos faciais, cálculo das métricas e lógica de inferência do estado de sono.",
+            "galeria": "https://user-images.githubusercontent.com/121525620/220442839-976a834d-80b7-4339-aa23-d74ad2c7925c.png|https://user-images.githubusercontent.com/121525620/220448363-c86a5d94-b614-4509-94e0-9b963e6b743e.png|https://user-images.githubusercontent.com/121525620/220448526-2166ddda-179b-422e-b9fe-cce64a7ffc92.png|https://user-images.githubusercontent.com/121525620/220447427-338fb558-00c9-479c-a993-66dbe5852bb5.png",
+            "prox_projeto": "1"
         }
-    }
+    };
 
     /**
      * Definir o conteudo da pagina de acordo com o codigo informado
      */
+
     $("#descricaoProjeto").html(descricoes[cod].descricao);
     $("#tituloProjeto").html(descricoes[cod].titulo);
+    $("#topico").html(descricoes[cod].topico);
+    $("#subtitulo").html(descricoes[cod].subtitulo);
+    $("#imagem_principal").html('<img src="'+descricoes[cod].imagem+'">');
+
+    tags = descricoes[cod].tags.split("|")
+    tags_span = ""
+    for (i = 0; i < tags.length; i++) {
+        tags_span += '<span class="tag">' + tags[i] + '</span>\n'
+    }
+    $("#tags").html(tags_span)
+
+    $("#tipo").html(descricoes[cod].tipo);
+    $("#dominio").html(descricoes[cod].dominio);
+    $("#papel_tecnico").html(descricoes[cod].papel_tecnico);
+    $("#complexidade").html(descricoes[cod].complexidade);
+    $("#contexto").html(descricoes[cod].contexto);
+    $("#arquitetura").html(descricoes[cod].arquitetura);
+
+    cards_topico = descricoes[cod].arquitetura_topicos.split("|")
+    cards_titulo = descricoes[cod].arquitetura_titulo.split("|")
+    cards_descricao = descricoes[cod].arquitetura_descricao.split("|")
+    cards_arquitetura = ""
+    for (i = 0; i < cards_topico.length; i++) {
+        cards_arquitetura += '<div class="project-arch-card"><span>'+cards_topico[i]+'</span><strong>'+cards_titulo[i]+'</strong><p>'+cards_descricao[i]+'</p></div>';
+    }
+    $("#cards_arquitetura").html(cards_arquitetura)
+
+    decisao_titulo = descricoes[cod].decisao_titulo.split("|")
+    decisao_descricao = descricoes[cod].decisao_descricao.split("|")
+    decisao = ""
+    for (i = 0; i < decisao_titulo.length; i++) {
+        decisao += '<article class="project-decision-card"><span>decision_0'+(i+1)+'</span><h3>'+decisao_titulo[i]+'</h3><p>'+decisao_descricao[i]+'</p></article>';
+    }
+    $("#decisao").html(decisao)
+
+    $("#tecnologias").html(descricoes[cod].tecnologias);
+
+    tags_tecnologias = descricoes[cod].tags.split("|")
+    tags_tecnologias_span = ""
+    for (i = 0; i < tags.length; i++) {
+        tags_tecnologias_span += '<span class="tag">' + tags_tecnologias[i] + '</span>\n'
+    }
+    $("#tags_tecnologias_span").html(tags_tecnologias_span);
+
+    $("#atuacao").html(descricoes[cod].atuacao);
+
+    galeria = descricoes[cod].galeria.split("|")
+    imgs = ""
+    for (i = 0; i < galeria.length; i++) {
+        imgs += '<figure class="project-gallery-item project-gallery-item--contain"><img src="'+galeria[i]+'"></figure>'
+    }
+    $("#galeria").html(imgs);
+
+    prox_projeto = descricoes[cod].prox_projeto;
+    prox = '<a class="project-next-link" href="projeto.html?cod='+prox_projeto+'"><span>próximo projeto</span><strong>'+descricoes[prox_projeto].titulo+' →</strong></a>'
+    $("#proximo_projeto").html(prox)
+
+
     $("#descricaoProjeto").show(1000);
 
 
@@ -103,7 +501,7 @@ $(document).ready(function () {
      */
     $("#buscarProjeto").on('click', function () {
         var texto = $("#projetoBuscar").val();
-        var projetos = "<center><b>Resultados para:</b> "+texto+"</center><div class='container'><br><b>IA e Machine Learning</b><br>";
+        var projetos = "<center><b>Resultados para:</b> " + texto + "</center><div class='container'><br><b>IA e Machine Learning</b><br>";
         var projetos_extras = "<b>Outros temas (não IA)</b><br>"; // projetos que nao sao de IA e M. Learning
         var cont = 0;
 
@@ -118,22 +516,22 @@ $(document).ready(function () {
                 if (proj.includes(texto)) {
                     // verifica se eh um dos projetos que nao sao de IA
                     if (i >= 7 && i <= 15) {
-                        projetos_extras += "&rarr; &nbsp; <a href='projeto.html?cod="+i+"'>"+descricoes[i].titulo+"</a><br>";
+                        projetos_extras += "&rarr; &nbsp; <a href='projeto.html?cod=" + i + "'>" + descricoes[i].titulo + "</a><br>";
                     } else { // projetos que sao de IA
-                        projetos += "&rarr; &nbsp; <a href='projeto.html?cod="+i+"'>"+descricoes[i].titulo+"</a><br>";
+                        projetos += "&rarr; &nbsp; <a href='projeto.html?cod=" + i + "'>" + descricoes[i].titulo + "</a><br>";
                     }
                     cont++;
                 }
                 projetos += "</ul>";
             }
 
-            if(cont == 0) {
+            if (cont == 0) {
                 projetos = "Nenhum projeto foi encontrado. Tente novamente usando <b>palavras chaves</b>.";
                 projetos_extras = "";
             }
 
             // Exibir modal de resultados
-            if(projetos.length > 0) {
+            if (projetos.length > 0) {
                 bootbox.alert({
                     message: projetos + "<br>" + projetos_extras,
                     callback: function () {

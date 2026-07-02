@@ -1,193 +1,173 @@
-/*
-Helios by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-(function($) {
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
 
-	var	$window = $(window),
-		$body = $('body'),
-		settings = {
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+	navLinks.classList.remove("open");
+	menuToggle.setAttribute("aria-expanded", "false");
+  });
+});
 
-			// Carousels
-				carousels: {
-					speed: 4,
-					fadeIn: true,
-					fadeDelay: 250
-				},
+document.getElementById("year").textContent = new Date().getFullYear();
 
-		};
+const typingTarget = document.getElementById("typing");
+const typingPhrases = [
+  "solve(complex_problem)",
+  "design(system_architecture)",
+  "apply(ai_to_process)",
+  "integrate(api + data + product)",
+  "document(requirements)"
+];
 
-	// Breakpoints.
-		breakpoints({
-			wide:      [ '1281px',  '1680px' ],
-			normal:    [ '961px',   '1280px' ],
-			narrow:    [ '841px',   '960px'  ],
-			narrower:  [ '737px',   '840px'  ],
-			mobile:    [ null,      '736px'  ]
-		});
+let phraseIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+function typeLoop() {
+  const current = typingPhrases[phraseIndex];
+  const visible = current.slice(0, charIndex);
+  typingTarget.textContent = visible;
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			speed: 350,
-			noOpenerFade: true,
-			alignment: 'center'
-		});
+  if (!deleting && charIndex < current.length) {
+	charIndex++;
+	setTimeout(typeLoop, 70);
+	return;
+  }
 
-	// Scrolly.
-		$('.scrolly').scrolly();
+  if (!deleting && charIndex === current.length) {
+	deleting = true;
+	setTimeout(typeLoop, 1200);
+	return;
+  }
 
+  if (deleting && charIndex > 0) {
+	charIndex--;
+	setTimeout(typeLoop, 35);
+	return;
+  }
 
-	// Carousels.
-		$('.carousel').each(function() {
+  deleting = false;
+  phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+  setTimeout(typeLoop, 250);
+}
 
-			var	$t = $(this),
-				$forward = $('<span class="forward"></span>'),
-				$backward = $('<span class="backward"></span>'),
-				$reel = $t.children('.reel'),
-				$items = $reel.children('article');
+typeLoop();
 
-			var	pos = 0,
-				leftLimit,
-				rightLimit,
-				itemWidth,
-				reelWidth,
-				timerId;
+const revealElements = document.querySelectorAll(".reveal");
 
-			// Items.
-				if (settings.carousels.fadeIn) {
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+	entries.forEach((entry) => {
+	  if (entry.isIntersecting) {
+		entry.target.classList.add("visible");
+		revealObserver.unobserve(entry.target);
+	  }
+	});
+  },
+  { threshold: 0.12 }
+);
 
-					$items.addClass('loading');
+revealElements.forEach((el) => revealObserver.observe(el));
 
-					$t.scrollex({
-						mode: 'middle',
-						top: '-20vh',
-						bottom: '-20vh',
-						enter: function() {
+const sections = document.querySelectorAll("main section[id]");
+const navItems = document.querySelectorAll(".nav-links a");
 
-							var	timerId,
-								limit = $items.length - Math.ceil($window.width() / itemWidth);
+const navObserver = new IntersectionObserver(
+  (entries) => {
+	entries.forEach((entry) => {
+	  if (!entry.isIntersecting) return;
 
-							timerId = window.setInterval(function() {
-								var x = $items.filter('.loading'), xf = x.first();
+	  navItems.forEach((item) => {
+		item.classList.toggle(
+		  "active",
+		  item.getAttribute("href") === `#${entry.target.id}`
+		);
+	  });
+	});
+  },
+  { rootMargin: "-40% 0px -55% 0px" }
+);
 
-								if (x.length <= limit) {
+sections.forEach((section) => navObserver.observe(section));
 
-									window.clearInterval(timerId);
-									$items.removeClass('loading');
-									return;
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particles = [];
+let animationFrame;
 
-								}
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-								xf.removeClass('loading');
+function resizeCanvas() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-							}, settings.carousels.fadeDelay);
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  canvas.style.width = `${rect.width}px`;
+  canvas.style.height = `${rect.height}px`;
 
-						}
-					});
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-				}
+  const amount = Math.max(34, Math.floor((rect.width * rect.height) / 16000));
 
-			// Main.
-				$t._update = function() {
-					pos = 0;
-					rightLimit = (-1 * reelWidth) + $window.width();
-					leftLimit = 0;
-					$t._updatePos();
-				};
+  particles = Array.from({ length: amount }, () => ({
+	x: Math.random() * rect.width,
+	y: Math.random() * rect.height,
+	vx: (Math.random() - 0.5) * 0.45,
+	vy: (Math.random() - 0.5) * 0.45,
+	radius: Math.random() * 1.7 + 0.6
+  }));
+}
 
-				$t._updatePos = function() { $reel.css('transform', 'translate(' + pos + 'px, 0)'); };
+function drawParticles() {
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
 
-			// Forward.
-				$forward
-					.appendTo($t)
-					.hide()
-					.mouseenter(function(e) {
-						timerId = window.setInterval(function() {
-							pos -= settings.carousels.speed;
+  ctx.clearRect(0, 0, width, height);
 
-							if (pos <= rightLimit)
-							{
-								window.clearInterval(timerId);
-								pos = rightLimit;
-							}
+  particles.forEach((p, index) => {
+	p.x += p.vx;
+	p.y += p.vy;
 
-							$t._updatePos();
-						}, 1);
-					})
-					.mouseleave(function(e) {
-						window.clearInterval(timerId);
-					});
+	if (p.x < 0 || p.x > width) p.vx *= -1;
+	if (p.y < 0 || p.y > height) p.vy *= -1;
 
-			// Backward.
-				$backward
-					.appendTo($t)
-					.hide()
-					.mouseenter(function(e) {
-						timerId = window.setInterval(function() {
-							pos += settings.carousels.speed;
+	ctx.beginPath();
+	ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+	ctx.fillStyle = "rgba(103, 232, 249, 0.58)";
+	ctx.fill();
 
-							if (pos >= leftLimit) {
+	for (let j = index + 1; j < particles.length; j++) {
+	  const q = particles[j];
+	  const dx = p.x - q.x;
+	  const dy = p.y - q.y;
+	  const distance = Math.sqrt(dx * dx + dy * dy);
 
-								window.clearInterval(timerId);
-								pos = leftLimit;
+	  if (distance < 118) {
+		ctx.beginPath();
+		ctx.moveTo(p.x, p.y);
+		ctx.lineTo(q.x, q.y);
+		ctx.strokeStyle = `rgba(103, 232, 249, ${0.14 * (1 - distance / 118)})`;
+		ctx.lineWidth = 1;
+		ctx.stroke();
+	  }
+	}
+  });
 
-							}
+  animationFrame = requestAnimationFrame(drawParticles);
+}
 
-							$t._updatePos();
-						}, 1);
-					})
-					.mouseleave(function(e) {
-						window.clearInterval(timerId);
-					});
-
-			// Init.
-				$window.on('load', function() {
-
-					reelWidth = $reel[0].scrollWidth;
-
-					if (browser.mobile) {
-
-						$reel
-							.css('overflow-y', 'hidden')
-							.css('overflow-x', 'scroll')
-							.scrollLeft(0);
-						$forward.hide();
-						$backward.hide();
-
-					}
-					else {
-
-						$reel
-							.css('overflow', 'visible')
-							.scrollLeft(0);
-						$forward.show();
-						$backward.show();
-
-					}
-
-					$t._update();
-
-					$window.on('resize', function() {
-						reelWidth = $reel[0].scrollWidth;
-						$t._update();
-					}).trigger('resize');
-
-				});
-
-		});
-
-	
-		
-	})(jQuery);
-	
-
+if (!prefersReducedMotion) {
+  resizeCanvas();
+  drawParticles();
+  window.addEventListener("resize", () => {
+	cancelAnimationFrame(animationFrame);
+	resizeCanvas();
+	drawParticles();
+  });
+}
