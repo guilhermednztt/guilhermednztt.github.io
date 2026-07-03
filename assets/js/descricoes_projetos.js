@@ -140,7 +140,7 @@ $(document).ready(function () {
         "5": {
             "topico": "python.package / graph.search",
             "titulo": "WayPy",
-            "subtitulo": "Pacote Python para busca de caminhos em grafos usando diferentes métodos clássicos de inteligência artificial.",
+            "subtitulo": "Pacote Python para busca de caminhos em grafos usando diferentes métodos clássicos de inteligência artificial.\n<button class='tag'><a href='https://pypi.org/project/waypy-routing/0.2.0/' target='_blank'>ACESSAR PROJETO</a></button>",
             "imagem": "../images/projetos/imagem4.avif",
             "tags": "Python|Pacote|Grafos|Busca|A*|Custo Uniforme",
             "tipo": "Pacote Python / Biblioteca de algoritmos",
