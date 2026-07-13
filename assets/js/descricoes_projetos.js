@@ -422,6 +422,30 @@ $(document).ready(function () {
             "tags_tecnologias": "Python|MediaPipe|Computer Vision|Landmarks|Distância Euclidiana",
             "atuacao": "Implementação da captura, análise dos pontos faciais, cálculo das métricas e lógica de inferência do estado de sono.",
             "galeria": "https://user-images.githubusercontent.com/121525620/220442839-976a834d-80b7-4339-aa23-d74ad2c7925c.png|https://user-images.githubusercontent.com/121525620/220448363-c86a5d94-b614-4509-94e0-9b963e6b743e.png|https://user-images.githubusercontent.com/121525620/220448526-2166ddda-179b-422e-b9fe-cce64a7ffc92.png|https://user-images.githubusercontent.com/121525620/220447427-338fb558-00c9-479c-a993-66dbe5852bb5.png",
+            "prox_projeto": "17"
+        },
+
+        "17": {
+            "topico": "indoor.navigation / graph.routing",
+            "titulo": "Indoor Map",
+            "subtitulo": "Sistema interativo de navegação em ambientes fechados, com visualização de plantas baixas, pontos de interesse pesquisáveis e cálculo de rotas.\n<button class='tag'><a href='https://github.com/guilhermednztt/indoor-map' target='_blank'>ACESSAR PROJETO</a></button>",
+            "imagem": "https://raw.githubusercontent.com/guilhermednztt/indoor-map/main/assets/files/img1.png",
+            "tags": "Mapa Indoor|Leaflet.js|Dijkstra|Grafos|Rotas|Pontos de Interesse",
+            "tipo": "Aplicação web / Navegação indoor",
+            "dominio": "Mapeamento de ambientes internos, orientação e busca de caminhos",
+            "papel_tecnico": "Modelagem do mapa, implementação do grafo, cálculo de rotas e construção da interface interativa",
+            "complexidade": "Conversão entre coordenadas da planta e do mapa, representação do ambiente em grafo, cálculo do menor caminho e renderização da rota",
+            "contexto": "O Indoor Map foi desenvolvido para orientar pessoas em shopping centers e outras instalações de grande porte. A aplicação combina uma planta baixa interativa com locais pesquisáveis, pontos de interesse e rotas entre origem e destino, podendo ser usada também em aeroportos, hospitais, centros de exposição e eventos.",
+            "arquitetura": "A planta baixa é renderizada pelo Leaflet.js com o sistema de coordenadas CRS.Simple. Corredores, portas e destinos formam um grafo bidirecional, cujas arestas recebem pesos calculados pela distância euclidiana. Ao selecionar origem e destino, o algoritmo de Dijkstra encontra o menor caminho, que é convertido em coordenadas do mapa e desenhado sobre a planta.",
+            "arquitetura_topicos": "01 / planta|02 / grafo|03 / rota|04 / visualização",
+            "arquitetura_titulo": "Mapa em coordenadas customizadas|Rede de circulação|Menor caminho|Orientação no ambiente",
+            "arquitetura_descricao": "A planta baixa é exibida no Leaflet.js usando CRS.Simple e coordenadas baseadas em pixels.|Nós representam corredores, portas e destinos, enquanto links bidirecionais representam caminhos percorríveis.|O algoritmo de Dijkstra calcula a rota ótima com pesos derivados das distâncias euclidianas entre os nós.|O caminho é convertido para o sistema do mapa e exibido com linha, marcadores e orientações.",
+            "decisao_titulo": "Usar Leaflet com CRS.Simple|Modelar circulação como grafo|Calcular pesos pelas coordenadas",
+            "decisao_descricao": "O CRS.Simple permite tratar a planta baixa como mapa sem depender de latitude e longitude.|A representação em grafo separa os destinos visíveis dos caminhos realmente percorríveis.|O cálculo automático da distância euclidiana mantém os pesos coerentes com a geometria da planta.",
+            "tecnologias": "JavaScript, HTML, CSS, Leaflet.js 1.9.4, CRS.Simple, grafos e algoritmo de Dijkstra.",
+            "tags_tecnologias": "JavaScript|HTML|CSS|Leaflet.js|CRS.Simple|Dijkstra|Grafos",
+            "atuacao": "Construção da aplicação web, configuração da planta interativa, modelagem dos nós e conexões, implementação do algoritmo de menor caminho e apresentação visual das rotas e pontos de interesse.",
+            "galeria": "https://raw.githubusercontent.com/guilhermednztt/indoor-map/main/assets/files/img1.png|https://raw.githubusercontent.com/guilhermednztt/indoor-map/main/assets/medias/planta1.png",
             "prox_projeto": "1"
         }
     };
